@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   ifLogoutClicked() {
-    this.setStte({ isLoggedIn: false });
+    this.setState({ isLoggedIn: false });
   }
 
   render() {
