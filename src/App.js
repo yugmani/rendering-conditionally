@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './style.css';
-
+import Message from './components/Message';
+import Login from './components/Login';
+import Logout from './components/Logout';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {isLoggedIn:false};
+    this.state = { isLoggedIn: false };
 
     this.ifLoginClicked = this.ifLoginClicked.bind(this);
 
@@ -14,23 +16,24 @@ class App extends React.Component {
   }
 
   ifLoginClicked() {
-    this.setState({isLoggedIn: true});
+    this.setState({ isLoggedIn: true });
   }
 
   ifLogoutClicked() {
-    this.setStte({isLoggedIn:false});
+    this.setStte({ isLoggedIn: false });
   }
 
-
-render(){
-  return (
-    <div>
-   {
-     (this.state.isLoggedIn)?(<Logout clickFunc = {this.ifLogoutClicked} />
-             ):(<Login clickFunc = {this.ifLoginClicked} />)
-}
-    </div>
-  )
-}
+  render() {
+    return (
+      <div>
+        <Message isLoggedIn={this.state.isLoggedIn} />
+        {this.state.isLoggedIn ? (
+          <Logout clickFunc={this.ifLogoutClicked} />
+        ) : (
+          <Login clickFunc={this.ifLoginClicked} />
+        )}
+      </div>
+    );
+  }
 }
 export default App;
