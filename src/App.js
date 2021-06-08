@@ -1,11 +1,36 @@
-import React from "react";
-import "./style.css";
+import React, { Component } from 'react';
+import './style.css';
 
-export default function App() {
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {isLoggedIn:false};
+
+    this.ifLoginClicked = this.ifLoginClicked.bind(this);
+
+    this.ifLogoutClicked = this.ifLogoutClicked.bind(this);
+  }
+
+  ifLoginClicked() {
+    this.setState({isLoggedIn: true});
+  }
+
+  ifLogoutClicked() {
+    this.setStte({isLoggedIn:false});
+  }
+
+
+render(){
   return (
     <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
-  );
+   {
+     (this.state.isLoggedIn)?(<Logout clickFunc = {this.ifLogoutClicked} />
+             ):(<Login clickFunc = {this.ifLoginClicked} />)
 }
+    </div>
+  )
+}
+}
+export default App;
