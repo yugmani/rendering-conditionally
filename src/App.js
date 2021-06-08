@@ -3,6 +3,7 @@ import './style.css';
 import Message from './components/Message';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import Toggle from './components/Toggle';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,13 +26,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Message isLoggedIn={this.state.isLoggedIn} />
         {this.state.isLoggedIn ? (
           <Logout clickFunc={this.ifLogoutClicked} />
         ) : (
           <Login clickFunc={this.ifLoginClicked} />
         )}
+        <Toggle />
       </div>
     );
   }
